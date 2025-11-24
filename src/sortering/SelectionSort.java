@@ -1,5 +1,9 @@
 package sortering;
 
+import model.Customer;
+
+import java.util.ArrayList;
+
 public class SelectionSort {
     private static void swap(int[] list, int i, int j) {
         int temp = list[i];
@@ -17,6 +21,45 @@ public class SelectionSort {
                 
             }
             swap(list, i, minPos);
+        }
+    }
+
+    private static void swap(String[] list, int i, int j) {
+        String temp = list[i];
+        list[i] = list[j];
+        list[j] = temp;
+    }
+
+    public static void selectionSort(String[] list) {
+        for (int i = 0; i < list.length; i++) {
+            int minPos = i;
+            for (int j = i + 1; j < list.length; j++) {
+                if (list[j].compareToIgnoreCase(list[minPos]) < 0) {
+                    minPos = j;
+                }
+
+            }
+            swap(list, i, minPos);
+        }
+    }
+
+    private static void swap(ArrayList<Customer> list, int i, int j) {
+        Customer temp = list.get(i);
+        list.set(i, list.get(j));
+        list.set(j, temp);
+    }
+
+    //Her laver vi hvor den tager et arraylist af customers, oSg så sortere den basret på efter navne
+    public static void selectionSort(ArrayList<Customer> list) {
+        for (int i = 0; i < list.size(); i++) {
+            int minPos = i;
+            for (int j = i + 1; j < list.size(); j++) {
+                if (list.get(j).getLastName().compareToIgnoreCase(list.get(minPos).getLastName()) < 0) {
+                    minPos = j;
+                }
+            }
+
+            swap(list,i,minPos);
         }
     }
     
